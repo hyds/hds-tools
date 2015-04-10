@@ -1,0 +1,25 @@
+{
+  "name": "hds-tools",
+  "version": "1.0.0",
+  "description": "Tools for cleaning and mapping hydrological db",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hyds/hds-tools.git"
+  },
+  "keywords": [
+    "Hydstra",
+    "Queensland",
+    "Groundwater",
+    "Database"
+  ],
+  "author": "Sholto Maud",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hyds/hds-tools/issues"
+  },
+  "homepage": "https://github.com/hyds/hds-tools"
+}
