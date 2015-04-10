@@ -1,23 +1,27 @@
 var mapping = require('./mapping.json');
+var lookup = require('./lookups.json');
 
-module.exports = function (tableDefinition) {
-  var tableDef = {};
-  for (fieldnumber in tableDefinition){
-    if (!tableDefinition.hasOwnProperty(fieldnumber)){continue;}
-    var field = tableDefinition[fieldnumber];
-    for (fieldname in field ){
-      if (!field.hasOwnProperty(fieldname)){continue;}
-      var schemaType = {};
-      var fieldDefinition = field[fieldname];
-      var lcFieldname = fieldname.toLowerCase();
-      var fldtype = fieldDefinition.fldtype.toUpperCase();
-      var typeMapping = mapping.fldtype[fldtype];
+module.exports = function (data) {
+  var mappedData = {};
+  for (row in data){
+    if (!data.hasOwnProperty(row)){continue;}
+    var row = data[row];
+    for (fieldname in row ){
+      if (!row.hasOwnProperty(fieldname)){continue;}
+      var value = row[fieldname];
+      
+      var mappedFieldname = fieldname;
+      if ( typeof mapping[fieldname] !== 'undefined' ){
+        mappedFieldname = mapping[fieldname];
+      }
 
-      schemaType['type'] = typeMapping;
-      schemaType.key = fieldDefinition.keyfld;
-      schemaType.uppercase = fieldDefinition.uppercase;
-      tableDef[lcFieldname] = schemaType;
-    }
+      if ( lookup[value] !== 'undefined' ){
+        mappedData[mappedFieldname] = lookup[value];
+      }
+      else {
+        mappedData[mappedFieldname] = value;
+      }
+    }  
   }
-  return tableDef;
+  return mappedData;
 }
