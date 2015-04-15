@@ -1,4 +1,5 @@
 module.exports = {
-    clean: require('./clean'),
+    cleanTable: require('./cleanTable'),
+    cleanSiteList: require('./cleanSiteList'),
     map: require('./map')
 };
