@@ -1,7 +1,7 @@
 var through = require('through2');
 
 module.exports = function (){
-  var retrn;
+  var sites;
   return through(function write(buffer, _, next) {
     var ret;
     var line = buffer.toString().replace(/;$/g,"");
@@ -20,12 +20,13 @@ module.exports = function (){
       }
     }
     
-    retrn = line[ret];
-    console.log('line [',retrn,']');
+    var ret = line[ret];
+    sites = ret.sites;
+    console.log('sits [',sites,']');
     next();
   },
   function end(cb){
-    this.push(retrn.sites, 'utf8');
+    this.push(sites, 'utf8');
     cb();
   })
 }
