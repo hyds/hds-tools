@@ -4,12 +4,15 @@ module.exports = function (){
   var sites;
   var ret;
   return through({ objectMode: true },function write(buffer, _, next) {
+    var line = buffer.toString().replace(/;$/g,"");
+    var chunk = JSON.parse(line);
     
-    //var line = buffer.toString();
     // return key not consistent from Hydstra webservice between agencies!!!
     // It's an outrage sir!!!
-    for (objKey in buffer){
-      if (!buffer.hasOwnProperty(objKey)){ continue; }
+    
+    for (objKey in chunk){
+      if (!chunk.hasOwnProperty(objKey)){ continue; }
+      
       switch (objKey){
         case 'return':
          ret = 'return';
@@ -20,10 +23,8 @@ module.exports = function (){
       }
     }
 
-    var ret = buffer[ret];
-    console.log('ret [',ret,']');
-    sites = ret.sites;
-    console.log('sits [',sites,']');
+    var retrn = chunk[ret];
+    sites = retrn.sites;
     next();
   },
   function end(cb){
