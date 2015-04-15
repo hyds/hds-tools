@@ -2,12 +2,12 @@ var through = require('through2');
 
 module.exports = function (){
   var sites;
+  var ret;
   return through({ objectMode: true },function write(buffer, _, next) {
-    var ret;
+    
     //var line = buffer.toString();
     // return key not consistent from Hydstra webservice between agencies!!!
     // It's an outrage sir!!!
-    console.log('line [',buffer,']');
     for (objKey in buffer){
       if (!buffer.hasOwnProperty(objKey)){ continue; }
       switch (objKey){
@@ -21,6 +21,7 @@ module.exports = function (){
     }
 
     var ret = buffer[ret];
+    console.log('ret [',ret,']');
     sites = ret.sites;
     console.log('sits [',sites,']');
     next();
