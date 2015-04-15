@@ -2,9 +2,9 @@ var through = require('through2');
 
 module.exports = function (){
   var sites;
-  return through(function write(buffer, _, next) {
+  return through({ objectMode: true },function write(buffer, _, next) {
     var ret;
-    var line = buffer.toString().replace(/;$/g,"");
+    var line = buffer.toString();
     // return key not consistent from Hydstra webservice between agencies!!!
     // It's an outrage sir!!!
     for (objKey in line){
@@ -19,7 +19,7 @@ module.exports = function (){
          break;
       }
     }
-    
+
     var ret = line[ret];
     sites = ret.sites;
     console.log('sits [',sites,']');
