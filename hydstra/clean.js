@@ -1,19 +1,30 @@
-module.exports = function ( line ){
-  var ret;
+var through = require('through2');
 
-  // return key not consistent from Hydstra webservice between agencies!!!
-  // It's an outrage sir!!!
-  for (objKey in line){
-    if (!line.hasOwnProperty(objKey)){ continue; }
-    switch (objKey){
-      case 'return':
-       ret = 'return';
-       break;
-      case '_return':
-       ret = '_return';
-       break;
+module.exports = function (){
+  var ret;
+  var retrn;
+  return through(function write(buffer, _, next) {
+    var line = buffer.toString().replace(/;$/g,"");
+    console.log('line [',line,']');
+    // return key not consistent from Hydstra webservice between agencies!!!
+    // It's an outrage sir!!!
+    for (objKey in line){
+      if (!line.hasOwnProperty(objKey)){ continue; }
+      switch (objKey){
+        case 'return':
+         ret = 'return';
+         break;
+        case '_return':
+         ret = '_return';
+         break;
+      }
     }
-  }
-  var retrn = line[ret];
-  return retrn.rows;
+    
+    retrn = line[ret];
+    next();
+  },
+  function end(cb){
+    this.push(retrn.rows, 'utf8');
+    cb();
+  })
 }
