@@ -24,7 +24,7 @@ module.exports = function (){
     next();
   },
   function end(cb){
-    this.push(retrn.rows, 'utf8');
+    this.push(retrn.sites, 'utf8');
     cb();
   })
 }
