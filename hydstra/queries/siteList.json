@@ -1,0 +1,7 @@
+{
+	"function":"get_site_list",
+	"version":"1",
+	"params":{
+		"site_list":"11000*"
+	}
+}

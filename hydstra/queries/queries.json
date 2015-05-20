@@ -1,0 +1,19 @@
+{
+    "getSites" : {
+            "function":"get_db_info",
+            "version":"3",
+            "params":{
+                "table_name":"site",
+                "sitelist_filter":"match(44*)",
+                "return_type":"array"
+            }
+    },
+    "getMastdict" : {
+        "function":"get_db_info",
+        "version":"3",
+        "params":{
+            "table_name":"mastdict",
+            "return_type":"hash"
+        }
+    }
+}

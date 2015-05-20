@@ -2,5 +2,6 @@ module.exports = {
     cleanTable: require('./cleanTable'),
     cleanSiteList: require('./cleanSiteList'),
     map: require('./map'),
-    cleanReturn: require('./cleanReturn')
+    cleanReturn: require('./cleanReturn'),
+    queries: require('./queries')
 };

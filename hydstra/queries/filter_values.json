@@ -1,0 +1,12 @@
+{
+	"getsites" : {
+		"function":"get_db_info",
+		"version":"3",
+		"params":{
+			"table_name":"site",
+			"filter_values":{"station":"063281"},
+			"return_type":"array",
+			"field_list":["latitude","longitude","stname","station","active","datemod","lldatum","elev","stntype","orgcode"]
+		}
+	}
+}
