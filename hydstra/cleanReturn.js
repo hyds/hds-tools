@@ -5,11 +5,23 @@ module.exports = function (){
   return through(function write(buffer, _, next) {
     var ret;
     var line = buffer.toString().replace(/;$/g,"");
+    var chunk;
     
+    try {
+      chunk  = JSON.parse(line);
+    }
+    catch(err) {
+      console.log('Error Parsing chunk! ',err);
+      
+    }
+
     // return key not consistent from Hydstra webservice between agencies!!!
     // It's an outrage sir!!!
-    for (objKey in line){
-      if (!line.hasOwnProperty(objKey)){ continue; }
+    //_return": {"rows": {"QWRSITE": {"zzzzzz_11": {"RIPARIANE": {"textdb":
+
+    for (objKey in chunk){
+      if (!chunk.hasOwnProperty(objKey)){ continue; }
+
       switch (objKey){
         case 'return':
          ret = 'return';
@@ -20,7 +32,7 @@ module.exports = function (){
       }
     }
     
-    retrn = line[ret];
+    retrn = chunk[ret];
     next();
   },
   function end(cb){
