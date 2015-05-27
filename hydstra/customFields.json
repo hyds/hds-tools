@@ -1,0 +1,8 @@
+{
+	"lastUpdate": { "type": "string", "format": "date-time" },    	
+	"agency":{ "type": "string", "required":true, "maxLength": 20},
+	"databaseVendor":{ "type": "string", "required":true, "maxLength": 20},
+	"CIK": { "type": "number", "maxLength": 10, "description": "The Central Index Key (CIK) is used on the United States Securities Exchange Commission"},
+	"SIC": { "type": "number", "maxLength": 4, "description": "Standard Industrial Classification used by the United States Securities Exchange Commission"},
+	"countryISO3166":{ "type": "string", "required":true, "maxLength": 3, "description":"ISO 3166 is the International Standard for country codes and codes for their subdivisions."}
+}

@@ -1,4 +1,4 @@
-var through = require('through2');
+var through = require('through2').obj;
 
 module.exports = function (){
   var retrn;
@@ -6,15 +6,10 @@ module.exports = function (){
     var ret;
     var line = buffer.toString().replace(/;$/g,"");
     var chunk;
+  
+    try { chunk  = JSON.parse(line); }
+    catch(err) { return this.emit('error',err) } 
     
-    try {
-      chunk  = JSON.parse(line);
-    }
-    catch(err) {
-      console.log('Error Parsing chunk! ',err);
-      
-    }
-
     // return key not consistent from Hydstra webservice between agencies!!!
     // It's an outrage sir!!!
     //_return": {"rows": {"QWRSITE": {"zzzzzz_11": {"RIPARIANE": {"textdb":

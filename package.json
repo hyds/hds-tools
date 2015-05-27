@@ -16,10 +16,18 @@
     "Groundwater",
     "Database"
   ],
-  "author": "Sholto Maud",
+  "author": {
+    "name": "Sholto Maud"
+  },
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/hyds/hds-tools/issues"
   },
-  "homepage": "https://github.com/hyds/hds-tools"
+  "homepage": "https://github.com/hyds/hds-tools",
+  "readme": "# hds-tools\n\nTools for cleaning, and mapping foreign hydrological db\n\n\n\n",
+  "readmeFilename": "README.md",
+  "gitHead": "f473eba09954ad7487e8d8cbca40bb5162fc4b78",
+  "_id": "hds-tools@1.0.12",
+  "_shasum": "d55970c0b6a76236664daaf6b0d181616a27c77d",
+  "_from": "hds-tools@^1.0.11"
 }

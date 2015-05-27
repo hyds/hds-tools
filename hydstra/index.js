@@ -3,5 +3,8 @@ module.exports = {
     cleanSiteList: require('./cleanSiteList'),
     map: require('./map'),
     cleanReturn: require('./cleanReturn'),
-    queries: require('./queries')
+    queries: require('./queries'),
+    generateMetaSchema: require('./generateMetaSchema'),
+    writeSchema: require('./writeSchema'),
+    createSchema: require('./createSchema')
 };
