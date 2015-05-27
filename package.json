@@ -1,6 +1,6 @@
 {
   "name": "hds-tools",
-  "version": "1.0.12",
+  "version": "1.0.13",
   "description": "Tools for cleaning and mapping hydrological db",
   "main": "index.js",
   "scripts": {
