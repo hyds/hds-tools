@@ -27,11 +27,14 @@ module.exports = function (){
       }
     }
     
-    retrn = chunk[ret];
-    next();
+    if ( !chunk[ret]) { next(); }
+    else{ 
+      retrn = chunk[ret].rows;
+      next();
+    }
   },
   function end(cb){
-    this.push(retrn.rows, 'utf8');
+    this.push(retrn, 'utf8');
     cb();
   })
 }
