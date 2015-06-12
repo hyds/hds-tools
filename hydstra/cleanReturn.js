@@ -27,9 +27,13 @@ module.exports = function (){
       }
     }
     
-    if ( !chunk[ret]) { next(); }
+    if ( !chunk[ret] ) { 
+      retrn = 'undefined'; 
+      next(); 
+    }
     else{ 
       retrn = chunk[ret].rows;
+      retrn = JSON.stringify(retrn);
       next();
     }
   },
